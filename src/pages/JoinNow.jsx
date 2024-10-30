@@ -1,9 +1,53 @@
 // src/pages/JoinNow.jsx
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import Alert from "../components/Alert/Alert";
 
 const JoinNow = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    occupation: "",
+    phone: "",
+    email: "",
+    experience: ""
+  });
+
+  const [alert, setAlert] = useState({ message: "", type: "", isVisible: false });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.send(
+      "service_ahm731q", // Replace with your EmailJS service ID
+      "template_muabr3f", // Your template ID
+      formData,
+      "odeWgS5PvV3YKOWsU" // Replace with your EmailJS user ID
+    )
+    .then(
+      (result) => {
+        // Show success alert
+        setAlert({ message: "Application submitted successfully!", type: "success", isVisible: true });
+        setFormData({ name: "", age: "", occupation: "", phone: "", email: "", experience: "" });
+      },
+      (error) => {
+        // Show error alert
+        setAlert({ message: "An error occurred. Please try again.", type: "error", isVisible: true });
+      }
+    );
+  };
+
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, isVisible: false });
+  };
+
   return (
     <section className="py-10 px-5 bg-gray-100 text-gray-900 mt-4">
+      {alert.isVisible && <Alert message={alert.message} type={alert.type} onClose={handleCloseAlert} />}
       <div className="container mx-auto max-w-xl">
         <h1 className="text-4xl font-bold text-center mb-8">Join the Tribe</h1>
         <p className="text-lg text-center mb-6">
@@ -11,13 +55,15 @@ const JoinNow = () => {
         </p>
 
         {/* Join Form */}
-        <form className="bg-white p-6 rounded-lg shadow-lg space-y-6">
+        <form className="bg-white p-6 rounded-lg shadow-lg space-y-6" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name" className="block text-md font-medium mb-1">Name</label>
             <input
               type="text"
               id="name"
               name="name"
+              value={formData.name}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Enter your full name"
               required
@@ -30,6 +76,8 @@ const JoinNow = () => {
               type="number"
               id="age"
               name="age"
+              value={formData.age}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Enter your age"
               required
@@ -42,6 +90,8 @@ const JoinNow = () => {
               type="text"
               id="occupation"
               name="occupation"
+              value={formData.occupation}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Your occupation or field of study"
             />
@@ -53,6 +103,8 @@ const JoinNow = () => {
               type="tel"
               id="phone"
               name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Enter your phone number"
               required
@@ -65,6 +117,8 @@ const JoinNow = () => {
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Enter your email address"
               required
@@ -76,6 +130,8 @@ const JoinNow = () => {
             <textarea
               id="experience"
               name="experience"
+              value={formData.experience}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               rows="4"
               placeholder="Briefly describe any previous martial arts experience"
