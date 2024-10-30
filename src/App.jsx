@@ -10,9 +10,12 @@ import Contacts from './pages/Contacts'
 import JoinNow from './pages/JoinNow'
 
 
+
+
 const App = () => {
   return (
     <Router>
+     
       <Navbar />
       <br />
       <Routes>
@@ -24,6 +27,7 @@ const App = () => {
         <Route path='/join' element={<JoinNow />}/>
       </Routes>
       <Footer />
+     
     </Router>
   )
 }

@@ -3,6 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  // Function to scroll to the top
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-black text-white py-10 px-5">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
@@ -21,9 +26,9 @@ const Footer = () => {
         <div className="space-y-4 text-center md:text-left">
           <h4 className="text-lg font-semibold">Quick Links</h4>
           <ul className="space-y-2">
-            <li><Link to="/about" className="hover:underline">About Us</Link></li>
-            <li><Link to="/programs" className="hover:underline">Programs</Link></li>
-            <li><Link to="/join" className="hover:underline">Join Now</Link></li>
+            <li><Link to="/about" className="hover:underline" onClick={scrollToTop}>About Us</Link></li>
+            <li><Link to="/programs" className="hover:underline" onClick={scrollToTop}>Programs</Link></li>
+            <li><Link to="/join" className="hover:underline" onClick={scrollToTop}>Join Now</Link></li>
           </ul>
         </div>
 
