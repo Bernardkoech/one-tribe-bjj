@@ -1,5 +1,6 @@
 // src/components/Hero.jsx
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 import heroImage from "./hero.jpeg";
 import Typewriter from "typewriter-effect";
 
@@ -52,20 +53,20 @@ const Hero = ({ scrollToPrograms }) => {
 
         {/* Call-to-Action Buttons */}
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-4 justify-center items-center">
-          <a
-            href="/join"
+          <Link
+            to="/join"
             className="bg-red-600 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
             aria-label="Join our Jiu-Jitsu community"
           >
             Join Now
-          </a>
-          <a
-            href="/join"
+          </Link>
+          <Link
+            to="/join"
             className="bg-transparent border-2 border-white text-white py-2 sm:py-3 px-4 sm:px-6 rounded-full hover:bg-white hover:text-black transition duration-300 transform hover:scale-105"
             aria-label="Schedule a free trial class at our gym"
           >
             Schedule a Class
-          </a>
+          </Link>
           <button
             onClick={scrollToPrograms}
             className="bg-green-600 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
