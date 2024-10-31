@@ -33,8 +33,8 @@ const About = () => {
           <h2 className="text-3xl font-semibold mb-4">Key Facts</h2>
           <ul className="list-disc ml-6 space-y-2">
             <li><strong>Location:</strong> Nairobi, Kenya</li>
-            <li><strong>Members:</strong> Around 4 people per session, growing steadily</li>
-            <li><strong>Skill Range:</strong> White belts to Coach Séraphin (brown belt)</li>
+            <li><strong>Members:</strong> Around 6 people per session, growing steadily</li>
+            <li><strong>Skill Range:</strong> White belts to Black belts</li>
             <li><strong>Opened:</strong> 2013, now in a new location</li>
             <li><strong>Atmosphere:</strong> Friendly, community-driven, and accessible</li>
           </ul>
@@ -45,10 +45,9 @@ const About = () => {
           <h2 className="text-3xl font-semibold mb-4">Meet Tete, Our Founder</h2>
           <ul className="list-disc ml-6 space-y-2">
             <li><strong>Name:</strong> Tete</li>
-            <li><strong>Age:</strong> 43</li>
-            <li><strong>Belt:</strong> Purple</li>
-            <li><strong>Profession:</strong> Real Estate Development</li>
-            <li><strong>Experience:</strong> 11 years in BJJ, also trained in Muay Thai and Boxing</li>
+            <li><strong>Age:</strong> 50</li>
+            <li><strong>Belt:</strong> Brown</li>
+            <li><strong>Experience:</strong> 17 years in BJJ, also trained in Muay Thai and Boxing</li>
           </ul>
           <p className="leading-relaxed mt-4">
             Tete began training Jiu Jitsu in the United States and brought his passion back to Kenya in 2012. As a pioneer of BJJ in Nairobi, Tete has been instrumental in building One Tribe’s foundation and culture, inspiring a new generation of martial artists.

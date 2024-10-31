@@ -2,28 +2,28 @@
 import React from "react";
 import instructor1 from "./tete.jpeg"; // Replace with actual image paths
 import instructor2 from "./seraphin.jpeg";
-import instructor3 from "./dan.jpeg";
+import instructor3 from "./george.jpg";
 
 const instructorsData = [
   {
     name: "Tete",
     role: "Head Instructor",
-    bio: "With over 15 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts. Known for his strategic approach and dedication, he has led students to multiple championships.",
+    bio: "With over 10 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts. ",
     expertise: ["Brazilian Jiu-Jitsu", "Mixed Martial Arts"],
     image: instructor1,
   },
   {
     name: "Seraphin",
-    role: "Kickboxing Coach",
-    bio: "Seraphin is a certified kickboxing instructor with a passion for fitness and competitive sports. She brings a high-energy approach to every class, helping students build strength and endurance.",
-    expertise: ["Kickboxing", "Strength Training"],
+    role: "BJJ Coach",
+    bio: "Seraphin is a dedicated Brazilian Jiu-Jitsu coach with a deep understanding of grappling techniques and a passion for student development. He brings a motivating and detailed approach to each class.",
+    expertise: ["Brazilian Jiu-Jitsu", "Grappling"],
     image: instructor2,
   },
   {
-    name: "Dan",
-    role: "Wrestling Coach",
-    bio: "Dan has a background in collegiate wrestling and over 10 years of coaching experience. His training focuses on technique and conditioning, ensuring students perform at their best.",
-    expertise: ["Wrestling", "Conditioning"],
+    name: "George",
+    role: "Striking Coach",
+    bio: "George is a skilled striking coach with a background in Kickboxing. He focuses on teaching precise striking techniques and conditioning to help students achieve peak performance.",
+    expertise: [ "Kickboxing",  "Brazilian Jiu-Jitsu"],
     image: instructor3,
   },
 ];
