@@ -8,7 +8,7 @@ const instructorsData = [
   {
     name: "Tete",
     role: "Head Instructor",
-    bio: "With over 10 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts. ",
+    bio: "With over 15 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts. ",
     expertise: ["Brazilian Jiu-Jitsu", "Mixed Martial Arts"],
     image: instructor1,
   },
