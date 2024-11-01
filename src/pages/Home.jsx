@@ -6,6 +6,7 @@ import Instructors from "../components/Instructors/Instructors";
 import JoinNow from "./JoinNow";
 import Events from "../components/Events/Events";
 import Gallery from "../components/Gallery/Gallery";
+import WhatsAppLink from "../components/WhatsappLink/WhatsappLink";
 
 const Home = () => {
   const programsRef = useRef(null);
@@ -16,6 +17,7 @@ const Home = () => {
 
   return (
     <div>
+      
       <Hero scrollToPrograms={scrollToPrograms} />
 
       <Instructors />
@@ -25,6 +27,7 @@ const Home = () => {
       </div>
       <Events />
       <JoinNow />
+      
     </div>
   );
 };

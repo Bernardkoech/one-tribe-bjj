@@ -14,10 +14,12 @@ import EventDetails from "./components/Events/EventDetails";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
+
 const App = () => {
   return (
     <Router>
       <Navbar />
+      
       <br />
       <Routes>
         <Route path="/" element={<Home />} />

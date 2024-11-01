@@ -5,69 +5,53 @@ import instructor2 from "./seraphin.jpeg";
 import instructor3 from "./george.jpg";
 
 const instructorsData = [
-  {
-    name: "Tete",
-    role: "Head Instructor",
-    bio: "With over 15 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts.",
-    detailedBio:
-      "Tete began training in martial arts at the age of 10 and has since achieved numerous accolades...",
-    expertise: ["Brazilian Jiu-Jitsu", "Mixed Martial Arts"],
-    achievements: [
-      "World BJJ Champion 2018",
-      "National MMA Coach of the Year 2020",
-    ],
-    image: instructor1,
-    socialLinks: {
-      instagram: "https://instagram.com/tete",
-      facebook: "https://facebook.com/tete",
+    {
+      name: "Tete",
+      role: "Head Instructor",
+      bio: "With over 15 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts.",
+      detailedBio: "Tete began training in martial arts at the age of 10 and has since achieved numerous accolades...",
+      expertise: ["Brazilian Jiu-Jitsu", "Mixed Martial Arts"],
+      achievements: ["World BJJ Champion 2018", "National MMA Coach of the Year 2020"],
+      image: instructor1,
+      socialLinks: {
+        instagram: "https://instagram.com/tete",
+        facebook: "https://facebook.com/tete",
+      },
+      gallery: [instructor1, instructor1, instructor1, instructor1],
+      videoIntro: "https://www.youtube.com/embed/LGO31XqkevM",
     },
-    gallery: [instructor1, instructor1, instructor1, instructor1],
-    videoIntro: "https://www.youtube.com/watch?v=LGO31XqkevMz",
-  },
-  {
-    name: "Seraphin",
-    role: "BJJ Coach",
-    bio: "Seraphin is a dedicated Brazilian Jiu-Jitsu coach with a deep understanding of grappling techniques and a passion for student development.",
-    detailedBio: "With over 10 years of experience in Brazilian Jiu-Jitsu...",
-    expertise: ["Brazilian Jiu-Jitsu", "Grappling"],
-    achievements: ["BJJ National Champion 2019", "Coach of the Year 2021"],
-    image: instructor2,
-    socialLinks: {
-      instagram: "https://instagram.com/seraphin",
-      facebook: "https://facebook.com/seraphin",
+    {
+      name: "Seraphin",
+      role: "BJJ Coach",
+      bio: "Seraphin is a dedicated Brazilian Jiu-Jitsu coach with a deep understanding of grappling techniques and a passion for student development.",
+      detailedBio: "With over 10 years of experience in Brazilian Jiu-Jitsu...",
+      expertise: ["Brazilian Jiu-Jitsu", "Grappling"],
+      achievements: ["BJJ National Champion 2019", "Coach of the Year 2021"],
+      image: instructor2,
+      socialLinks: {
+        instagram: "https://instagram.com/seraphin",
+        facebook: "https://facebook.com/seraphin",
+      },
+      gallery: [instructor2, instructor2, instructor2, instructor2],
+      videoIntro: "https://www.youtube.com/embed/LGO31XqkevM",
     },
-    gallery: [
-      instructor2,
-      instructor2,
-      instructor2,
-      instructor2,
-    ],
-    videoIntro: "https://www.youtube.com/watch?v=LGO31XqkevM",
-  },
-  {
-    name: "George",
-    role: "Striking Coach",
-    bio: "George is a skilled striking coach with a background in Kickboxing.",
-    detailedBio: "George has been practicing Kickboxing for over a decade...",
-    expertise: ["Kickboxing", "Brazilian Jiu-Jitsu"],
-    achievements: [
-      "National Kickboxing Champion 2017",
-      "Certified Kickboxing Instructor",
-    ],
-    image: instructor3,
-    socialLinks: {
-      instagram: "https://instagram.com/george",
-      facebook: "https://facebook.com/george",
+    {
+      name: "George",
+      role: "Striking Coach",
+      bio: "George is a skilled striking coach with a background in Kickboxing.",
+      detailedBio: "George has been practicing Kickboxing for over a decade...",
+      expertise: ["Kickboxing", "Brazilian Jiu-Jitsu"],
+      achievements: ["National Kickboxing Champion 2017", "Certified Kickboxing Instructor"],
+      image: instructor3,
+      socialLinks: {
+        instagram: "https://instagram.com/george",
+        facebook: "https://facebook.com/george",
+      },
+      gallery: [instructor3, instructor3, instructor3, instructor3],
+      videoIntro: "https://www.youtube.com/embed/LGO31XqkevM",
     },
-    gallery: [
-      instructor3,
-      instructor3,
-      instructor3,
-      instructor3,
-    ],
-    videoIntro: "https://youtu.be/LGO31XqkevM?si=IgEohQml-zkFpIEz",
-  },
-];
+  ];
+  
 
 const InstructorDetails = () => {
   const { instructorId } = useParams();

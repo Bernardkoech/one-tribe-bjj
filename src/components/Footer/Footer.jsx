@@ -1,4 +1,5 @@
-// src/components/Footer.jsx
+// Import necessary icons
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -11,6 +12,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 px-5">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
+        
         {/* Contact and Location */}
         <div className="text-center md:text-left space-y-4">
           <h3 className="text-xl font-bold">One Tribe Jiu Jitsu</h3>
@@ -32,18 +34,15 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Social Media */}
+        {/* Social Media Links */}
         <div className="space-y-4 text-center md:text-left">
           <h4 className="text-lg font-semibold">Follow Us</h4>
           <div className="flex space-x-4 justify-center md:justify-start">
-            <a href="https://facebook.com/onetribebjj" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook-f text-xl hover:text-gray-400"></i>
+            <a href="https://www.facebook.com/OneTribeBJJ/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-700 transition duration-200" />
             </a>
-            <a href="https://twitter.com/onetribebjj" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter text-xl hover:text-gray-400"></i>
-            </a>
-            <a href="https://instagram.com/onetribebjj" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram text-xl hover:text-gray-400"></i>
+            <a href="https://www.instagram.com/onetribebjj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram className="text-2xl text-pink-500 hover:text-pink-600 transition duration-200" />
             </a>
           </div>
         </div>

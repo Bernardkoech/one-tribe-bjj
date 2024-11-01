@@ -1,3 +1,5 @@
+// Import necessary icons
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import Alert from "../components/Alert/Alert";
@@ -20,20 +22,19 @@ const Contacts = () => {
     e.preventDefault();
   
     emailjs.send(
-      "service_fpizptm",         // Your EmailJS Service ID
-      "template_5wm5fq7",        // Your EmailJS Template ID
+      "service_fpizptm",
+      "template_5wm5fq7",
       {
-        to_name: "One Tribe BJJ", // Replace this with your actual gym name
+        to_name: "One Tribe BJJ",
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message
       },
-      "odeWgS5PvV3YKOWsU"        // Your EmailJS Public Key
+      "odeWgS5PvV3YKOWsU"
     )
     .then((result) => {
       console.log("Message sent:", result.text);
       setAlert({ visible: true, message: "Your message has been sent successfully!", type: "success" });
-      // Reset the form fields
       setFormData({ name: "", email: "", message: "" });
     })
     .catch((error) => {
@@ -106,12 +107,17 @@ const Contacts = () => {
           </form>
         </div>
 
-        {/* Additional Contact Methods */}
+        {/* Social Media Links */}
         <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-          <h2 className="text-2xl font-semibold mb-4">Connect with Us</h2>
-          <p className="text-md mb-2">For quick responses, feel free to reach us at:</p>
-          <p className="text-md font-medium">Phone: +254-700-123456</p>
-          <p className="text-md font-medium">Email: info@onetribebjjkenya.com</p>
+          <h2 className="text-2xl font-semibold mb-4">Follow Us</h2>
+          <div className="flex justify-center space-x-6">
+            <a href="https://www.facebook.com/OneTribeBJJ/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-700 transition duration-200" />
+            </a>
+            <a href="https://www.instagram.com/onetribebjj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram className="text-2xl text-pink-500 hover:text-pink-600 transition duration-200" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
