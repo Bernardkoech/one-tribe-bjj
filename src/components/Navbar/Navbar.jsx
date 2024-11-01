@@ -1,12 +1,12 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import logo from "./logo.jpeg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation(); // Get current location
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -21,12 +21,13 @@ const Navbar = () => {
         {/* Left Links */}
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Home</Link>
-          <Link to="/programs" className="nav-link">Programs</Link>
-          <Link to="/instructors" className="nav-link">Instructors</Link>
+          <Link to="/programs" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Programs</Link>
+          <Link to="/instructors" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Instructors</Link>
+          <Link to="/events" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Events</Link>
         </div>
 
         {/* Center Logo and Name as a Link to Home */}
-        <Link to="/" className="flex items-center flex-1 justify-center" onClick={scrollToTop}>
+        <Link to="/" className="flex items-center flex-1 justify-center" onClick={() => { scrollToTop(); setIsOpen(false); }}>
           <span className="font-bold text-xl sm:text-2xl bg-gradient-to-r from-black via-red-600 to-green-600 bg-clip-text text-transparent">
             ONE
           </span>
@@ -38,8 +39,8 @@ const Navbar = () => {
 
         {/* Right Buttons */}
         <div className="hidden md:flex space-x-4">
-          <Link to="/about" className="button-link">About</Link>
-          <Link to="/contacts" className="button-link">Contact Us</Link>
+          <Link to="/about" className="button-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>About</Link>
+          <Link to="/contacts" className="button-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Contact Us</Link>
         </div>
 
         {/* Hamburger Menu for Mobile */}
@@ -54,10 +55,11 @@ const Navbar = () => {
       {isOpen && (
         <div className="mobile-menu md:hidden">
           <Link to="/" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Home</Link>
-          <Link to="/programs" onClick={() => setIsOpen(false)} className="mobile-link">Programs</Link>
-          <Link to="/instructors" onClick={() => setIsOpen(false)} className="mobile-link">Instructors</Link>
-          <Link to="/about" onClick={() => setIsOpen(false)} className="mobile-link">About</Link>
-          <Link to="/contacts" onClick={() => setIsOpen(false)} className="mobile-link">Contact</Link>
+          <Link to="/programs" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Programs</Link>
+          <Link to="/instructors" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Instructors</Link>
+          <Link to="/events" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Events</Link>
+          <Link to="/about" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">About</Link>
+          <Link to="/contacts" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Contact</Link>
         </div>
       )}
     </nav>

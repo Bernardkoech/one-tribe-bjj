@@ -1,6 +1,7 @@
 // src/components/Instructors.jsx
 import React from "react";
-import instructor1 from "./tete.jpeg"; // Replace with actual image paths
+import { Link } from "react-router-dom"; // Import Link
+import instructor1 from "./tete.jpeg"; 
 import instructor2 from "./seraphin.jpeg";
 import instructor3 from "./george.jpg";
 
@@ -8,22 +9,22 @@ const instructorsData = [
   {
     name: "Tete",
     role: "Head Instructor",
-    bio: "With over 15 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts. ",
+    bio: "With over 15 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts.",
     expertise: ["Brazilian Jiu-Jitsu", "Mixed Martial Arts"],
     image: instructor1,
   },
   {
     name: "Seraphin",
     role: "BJJ Coach",
-    bio: "Seraphin is a dedicated Brazilian Jiu-Jitsu coach with a deep understanding of grappling techniques and a passion for student development. He brings a motivating and detailed approach to each class.",
+    bio: "Seraphin is a dedicated Brazilian Jiu-Jitsu coach with a deep understanding of grappling techniques and a passion for student development.",
     expertise: ["Brazilian Jiu-Jitsu", "Grappling"],
     image: instructor2,
   },
   {
     name: "George",
     role: "Striking Coach",
-    bio: "George is a skilled striking coach with a background in Kickboxing. He focuses on teaching precise striking techniques and conditioning to help students achieve peak performance.",
-    expertise: [ "Kickboxing",  "Brazilian Jiu-Jitsu"],
+    bio: "George is a skilled striking coach with a background in Kickboxing.",
+    expertise: ["Kickboxing", "Brazilian Jiu-Jitsu"],
     image: instructor3,
   },
 ];
@@ -35,10 +36,7 @@ const Instructors = () => {
         <h2 className="text-4xl font-bold text-center mb-8">Meet Our Instructors</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {instructorsData.map((instructor, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-            >
+            <Link to={`/instructors/${index}`} key={index} className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <img
                 src={instructor.image}
                 alt={`${instructor.name} - ${instructor.role}`}
@@ -55,7 +53,7 @@ const Instructors = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
