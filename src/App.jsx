@@ -14,8 +14,6 @@ import EventDetails from "./components/Events/EventDetails";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-
-
 const App = () => {
   return (
     <Router>
@@ -25,7 +23,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/programs" element={<Programs />} />
         <Route path="/instructors" element={<Instructors />} />
-        <Route path="/instructors/:instructorId" element={<InstructorDetails />} />
+        <Route path="/instructors/:instructorId" element={<InstructorDetails />} /> {/* Corrected here */}
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/join" element={<JoinNow />} />
