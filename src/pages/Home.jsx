@@ -7,6 +7,7 @@ import JoinNow from "./JoinNow";
 import Events from "../components/Events/Events";
 import Gallery from "../components/Gallery/Gallery";
 import WhatsAppLink from "../components/WhatsappLink/WhatsappLink";
+import Rates from "../components/Rates/Rates";
 
 const Home = () => {
   const programsRef = useRef(null);
@@ -21,6 +22,7 @@ const Home = () => {
       <Hero scrollToPrograms={scrollToPrograms} />
 
       <Instructors />
+      <Rates />
       <Gallery />
       <div ref={programsRef}>
         <Programs title="Our Programs" />
