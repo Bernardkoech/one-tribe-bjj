@@ -20,13 +20,13 @@ const Home = () => {
     <div>
       
       <Hero scrollToPrograms={scrollToPrograms} />
-
-      <Instructors />
-      <Rates />
-      <Gallery />
       <div ref={programsRef}>
         <Programs title="Our Programs" />
       </div>
+      <Instructors />
+      <Rates />
+      <Gallery />
+      
       <Events />
       <JoinNow />
       
