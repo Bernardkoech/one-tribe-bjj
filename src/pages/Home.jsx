@@ -23,6 +23,7 @@ const Home = () => {
       <div ref={programsRef}>
         <Programs title="Our Programs" />
       </div>
+      
       <Instructors />
       <Rates />
       <Gallery />

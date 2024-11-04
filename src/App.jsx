@@ -1,3 +1,4 @@
+// App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -11,9 +12,10 @@ import JoinNow from "./pages/JoinNow";
 import Events from "./components/Events/Events";
 import InstructorDetails from "./components/Instructors/InstructorDetails";
 import EventDetails from "./components/Events/EventDetails";
+
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
+import WhatsAppLink from "./components/WhatsappLink/WhatsappLink";
 
 const App = () => {
   return (
@@ -21,18 +23,21 @@ const App = () => {
       <Navbar />
       
       <br />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/programs" element={<Programs />} />
         <Route path="/instructors" element={<Instructors />} />
-        <Route path="/instructors/:instructorId" element={<InstructorDetails />} /> {/* Corrected here */}
+        <Route path="/instructors/:instructorId" element={<InstructorDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/join" element={<JoinNow />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:eventId" element={<EventDetails />} />
       </Routes>
+      
       <Footer />
+      <WhatsAppLink />
     </Router>
   );
 };
