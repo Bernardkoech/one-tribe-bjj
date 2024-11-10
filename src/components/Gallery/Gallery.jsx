@@ -11,14 +11,14 @@ import trainingImg7 from "./trainingImg7.jpeg";
 import trainingImg8 from "./trainingImg8.jpeg";
 
 const galleryImages = [
-    { src: trainingImg1, alt: "31/10/2024" }, // Most recent
+    { src: trainingImg1, alt: "10/11/2024" }, // Most recent
+    { src: trainingImg3, alt: "8/11/2024" },
+    { src: trainingImg2, alt: "7/11/2024" },
+    { src: trainingImg6, alt: "5/11/2024" },
+    { src: trainingImg5, alt: "5/11/2024" },
     { src: trainingImg4, alt: "30/10/2024" },
-    { src: trainingImg3, alt: "29/10/2024" },
-    { src: trainingImg2, alt: "28/10/2024" },
     { src: trainingImg8, alt: "26/10/2024" },
-    { src: trainingImg7, alt: "25/10/2024" },
-    { src: trainingImg6, alt: "24/10/2024" },
-    { src: trainingImg5, alt: "23/10/2024" }, // Oldest
+    { src: trainingImg7, alt: "25/10/2024" }, // Oldest
   ];
   
 
