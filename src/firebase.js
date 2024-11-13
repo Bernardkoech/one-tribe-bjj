@@ -1,5 +1,6 @@
+// firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";  // Import GoogleAuthProvider
+import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -12,12 +13,14 @@ const firebaseConfig = {
   measurementId: "G-HZM56E6PJ3"
 };
 
-// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-// Initialize Firebase Authentication and Firestore
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+// Set persistence for Firebase auth
+setPersistence(auth, browserLocalPersistence)
+  .catch((error) => {
+    console.error("Error setting persistence:", error.message);
+  });
 
-// Initialize Google Authentication provider
-export const googleAuthProvider = new GoogleAuthProvider();  // Add GoogleAuthProvider
+export { auth, db };

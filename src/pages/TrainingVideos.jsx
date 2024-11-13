@@ -1,12 +1,31 @@
-// src/pages/TrainingVideos.jsx
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const TrainingVideos = () => {
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        navigate("/login"); // Redirect to login if no user is authenticated
+      } else {
+        setLoading(false); // User is authenticated, show the content
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup on component unmount
+  }, [navigate]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Or a loader component
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 mt-5">

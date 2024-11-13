@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/training-videos");
+      navigate("/training-videos"); // Redirect to training videos page after successful login
     } catch (error) {
       setError("Invalid email or password.");
       console.error("Login error:", error.message);

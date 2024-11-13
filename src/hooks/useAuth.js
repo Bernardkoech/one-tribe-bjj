@@ -1,10 +1,8 @@
-
-
-// src/hooks/useAuth.js
-import { useEffect, useState } from "react";
+// useAuth.js
+import { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 
 const useAuth = () => {
   const [user, setUser] = useState(null);
@@ -14,11 +12,10 @@ const useAuth = () => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-
-        // Fetch user role from Firestore
+        // Fetch the user role from Firestore
         const userDoc = await getDoc(doc(db, "users", currentUser.uid));
         if (userDoc.exists()) {
-          setRole(userDoc.data().role);
+          setRole(userDoc.data().role); // Assuming role is stored in Firestore
         }
       } else {
         setUser(null);
@@ -26,7 +23,7 @@ const useAuth = () => {
       }
     });
 
-    return unsubscribe;
+    return () => unsubscribe();  // Clean up the listener on component unmount
   }, []);
 
   return { user, role };
