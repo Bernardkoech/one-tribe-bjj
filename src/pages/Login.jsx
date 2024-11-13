@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { user, role } = useAuth();  // Fetch the user and role from context
+
+  useEffect(() => {
+    if (user && role === "member") {
+      // If the user is logged in, redirect them to the training videos page
+      navigate("/training-videos");
+    }
+  }, [user, role, navigate]);  // Only rerun if `user` or `role` changes
 
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/training-videos"); // Redirect to training videos page after successful login
+      // No need to navigate explicitly here since useEffect will handle it
     } catch (error) {
       setError("Invalid email or password.");
       console.error("Login error:", error.message);
