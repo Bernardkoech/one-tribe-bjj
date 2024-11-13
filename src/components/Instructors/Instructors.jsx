@@ -8,23 +8,23 @@ import instructor3 from "./george.jpg";
 const instructorsData = [
   {
     name: "Tete",
-    role: "Head Instructor",
+    role: "Founder One tribe",
     bio: "With over 15 years in martial arts, Tete specializes in Brazilian Jiu-Jitsu and Mixed Martial Arts.",
     expertise: ["Brazilian Jiu-Jitsu", "Mixed Martial Arts"],
     image: instructor1,
   },
   {
     name: "Seraphin",
-    role: "BJJ Coach",
+    role: "Head Instructor",
     bio: "Seraphin is a dedicated Brazilian Jiu-Jitsu coach with a deep understanding of grappling techniques and a passion for student development.",
     expertise: ["Brazilian Jiu-Jitsu", "Grappling"],
     image: instructor2,
   },
   {
     name: "George",
-    role: "Striking Coach",
+    role: "Striking and Grappling Coach",
     bio: "George is a skilled striking coach with a background in Kickboxing.",
-    expertise: ["Kickboxing", "Brazilian Jiu-Jitsu"],
+    expertise: ["Striking (Kickboxing, Muay Thai)", "Grappling(Brazilian Jiu-Jitsu, Muay Thai)"],
     image: instructor3,
   },
 ];

@@ -24,6 +24,7 @@ const Navbar = () => {
           <Link to="/programs" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Programs</Link>
           <Link to="/instructors" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Instructors</Link>
           <Link to="/events" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Events</Link>
+          <Link to="/training-videos" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Training videos</Link>
         </div>
 
         {/* Center Logo and Name as a Link to Home */}
@@ -60,6 +61,7 @@ const Navbar = () => {
           <Link to="/events" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Events</Link>
           <Link to="/about" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">About</Link>
           <Link to="/contacts" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Contact</Link>
+          <Link to="/training-videos" onClick={() => { scrollToTop(); setIsOpen(false); }} className="mobile-link">Training Videos</Link>
         </div>
       )}
     </nav>
