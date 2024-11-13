@@ -1,7 +1,8 @@
 // Import necessary icons
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser';
+
 import Alert from "../components/Alert/Alert";
 
 const Contacts = () => {

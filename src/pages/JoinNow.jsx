@@ -1,6 +1,7 @@
 // src/pages/JoinNow.jsx
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser';
+
 import Alert from "../components/Alert/Alert";
 
 const JoinNow = () => {
