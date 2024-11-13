@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
-import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore"; // Import getDoc
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; // Import setDoc
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -58,39 +58,6 @@ const SignUp = () => {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-
-      // Check if the user is already in your database, or create a new user entry
-      const userRef = doc(db, "users", user.uid);
-      const docSnap = await getDoc(userRef); // Using getDoc to fetch user data
-
-      if (!docSnap.exists()) {
-        // If the user does not exist in your database, create a new user document
-        await setDoc(userRef, {
-          email: user.email,
-          role: "member", // You can define roles according to your needs
-        });
-      }
-
-      alert("Sign-in successful!");
-      setError(null); // Clear error on successful sign-in
-
-      // Redirect to Home page after successful sign-in
-      navigate("/"); // Adjust this path according to your app's route
-    } catch (error) {
-      if (error.code === "auth/popup-closed-by-user") {
-        setError("Sign-in was cancelled. Please try again.");
-      } else {
-        setError("An error occurred during Google sign-in. Please try again.");
-      }
-      console.error("Error signing in with Google:", error.message);
-    }
-  };
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
@@ -131,15 +98,6 @@ const SignUp = () => {
           className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition-colors duration-200"
         >
           Sign Up
-        </button>
-
-        <div className="my-4 text-center">or</div>
-
-        <button
-          onClick={handleGoogleSignIn}
-          className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-colors duration-200"
-        >
-          Sign In with Google
         </button>
       </div>
     </div>

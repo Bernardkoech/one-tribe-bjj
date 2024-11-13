@@ -1,7 +1,6 @@
-// src/pages/Login.jsx
 import { useState } from "react";
-import { auth, googleAuthProvider } from "../firebase"; // Import googleAuthProvider
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -17,17 +16,6 @@ const Login = () => {
     } catch (error) {
       setError("Invalid email or password.");
       console.error("Login error:", error.message);
-    }
-  };
-
-  const handleGoogleSignIn = async () => {
-    try {
-      // Trigger Google sign-in popup
-      await signInWithPopup(auth, googleAuthProvider);
-      navigate("/training-videos");
-    } catch (error) {
-      setError("Error signing in with Google.");
-      console.error("Google sign-in error:", error.message);
     }
   };
 
@@ -55,14 +43,6 @@ const Login = () => {
           className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-colors duration-200"
         >
           Login
-        </button>
-        
-        {/* Google Login Button */}
-        <button
-          onClick={handleGoogleSignIn}
-          className="w-full bg-red-500 text-white p-3 rounded-lg hover:bg-red-600 transition-colors duration-200 mt-4"
-        >
-          Login with Google
         </button>
       </div>
     </div>
