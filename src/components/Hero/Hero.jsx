@@ -32,7 +32,7 @@ const Hero = ({ scrollToPrograms }) => {
         </h1>
 
         {/* Typewriter Animation */}
-        <p className="text-base sm:text-lg md:text-xl mb-6 drop-shadow-lg">
+        <div className="text-base sm:text-lg md:text-xl mb-6 drop-shadow-lg">
           <Typewriter
             options={{
               strings: ["Where warriors train and community thrives."],
@@ -42,7 +42,7 @@ const Hero = ({ scrollToPrograms }) => {
               delay: 75,
             }}
           />
-        </p>
+        </div>
 
         {/* Highlight Information */}
         <p className="text-sm sm:text-md md:text-lg mb-6 drop-shadow-lg max-w-2xl mx-auto">
