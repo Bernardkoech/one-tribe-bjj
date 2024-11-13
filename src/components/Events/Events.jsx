@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import eventPoster1 from "./eventposter1.jpeg";
-import eventPoster2 from "./eventposter1.jpeg";
+import eventPoster2 from "./eventposter2.jpeg";
 import eventPoster3 from "./eventposter1.jpeg";
 
 const eventsData = [
@@ -16,11 +16,11 @@ const eventsData = [
   },
   {
     id: "2",
-    title: "Annual Kickboxing Tournament",
-    date: "December 5, 2024",
-    location: "Ramata Greens Sports Complex",
+    title: "Jiu Jitsu Potluck League",
+    date: "November 16, 2024",
+    location: "Decathlon Kenya",
     description:
-      "Showcase your skills at our annual kickboxing tournament! Spectators welcome.",
+      "Showcase your skills at the Jiu Jitsu Potluck League",
     poster: eventPoster2,
   },
   {
