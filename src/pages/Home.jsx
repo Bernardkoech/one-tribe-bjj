@@ -41,7 +41,9 @@ const Home = () => {
       </section>
 
        {/* Gallery section */}
-      
+       <section className="py-16">
+        <Gallery />
+      </section>
       
       {/* Events section */}
       <section className="py-16">

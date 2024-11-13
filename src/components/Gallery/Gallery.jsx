@@ -1,10 +1,8 @@
-// src/components/Gallery.jsx
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import styles for carousel
 
-
-
-
+// Importing images
 import trainingImg1 from "./trainingImg1.jpeg";
 import trainingImg2 from "./trainingImg2.jpeg";
 import trainingImg3 from "./trainingImg3.jpeg";
@@ -28,38 +26,31 @@ const galleryImages = [
 
 const Gallery = () => {
   return (
-    <section className="py-16 bg-gradient-to-r from-blue-100 via-indigo-200 to-purple-300">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-semibold text-center mb-12 text-gray-900 tracking-tight">
-          Training Sessions Gallery
-        </h2>
+    <div className="py-8 px-4 bg-gray-100">
+      <h1 className="text-center text-4xl font-bold mb-8 text-gray-800">Training Gallery</h1>
 
-        {/* Swiper Gallery */}
-        <Swiper
-          spaceBetween={20} // Space between slides
-          slidesPerView={3} // Number of slides visible at once
-          loop={true} // Infinite loop
-          autoplay={{ delay: 2500 }} // Autoplay every 2.5 seconds
-          breakpoints={{
-            768: {
-              slidesPerView: 1, // For small screens, show 1 image at a time
-            },
-          }}
+      <div className="max-w-screen-lg mx-auto overflow-hidden">
+        <Carousel
+          showThumbs={false}
+          infiniteLoop
+          autoPlay
+          interval={3000}
+          transitionTime={500}
+          dynamicHeight={true}
         >
           {galleryImages.map((image, index) => (
-            <SwiperSlide key={index}>
-              <div className="relative overflow-hidden rounded-xl shadow-2xl cursor-pointer">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover rounded-xl transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-            </SwiperSlide>
+            <div key={index} className="relative">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-80 object-contain rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
+              />
+              <p className="absolute bottom-4 left-0 right-0 text-center text-white bg-black bg-opacity-50 py-2 px-4 text-xl font-semibold rounded-md">{image.alt}</p>
+            </div>
           ))}
-        </Swiper>
+        </Carousel>
       </div>
-    </section>
+    </div>
   );
 };
 
