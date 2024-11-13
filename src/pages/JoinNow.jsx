@@ -1,7 +1,6 @@
 // src/pages/JoinNow.jsx
 import React, { useState } from "react";
 import emailjs from '@emailjs/browser';
-
 import Alert from "../components/Alert/Alert";
 
 const JoinNow = () => {
@@ -12,6 +11,7 @@ const JoinNow = () => {
     phone: "",
     email: "",
     experience: ""
+    
   });
 
   const [alert, setAlert] = useState({ message: "", type: "", isVisible: false });
