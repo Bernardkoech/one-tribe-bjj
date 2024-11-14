@@ -1,19 +1,20 @@
 // src/pages/Home.jsx
-import React, { useRef } from "react";
+import React, { useRef, Suspense } from "react";
 import Hero from "../components/Hero/Hero";
-import Programs from "../components/Programs/Programs";
-import Instructors from "../components/Instructors/Instructors";
-import JoinNow from "./JoinNow";
-import Events from "../components/Events/Events";
-import Gallery from "../components/Gallery/Gallery";
-import WhatsAppLink from "../components/WhatsappLink/WhatsappLink";  // Make sure you're using this component if it's required.
-import Rates from "../components/Rates/Rates";
+import WhatsAppLink from "../components/WhatsappLink/WhatsappLink";
+
+// Lazy loading components
+const Programs = React.lazy(() => import("../components/Programs/Programs"));
+const Instructors = React.lazy(() => import("../components/Instructors/Instructors"));
+const Rates = React.lazy(() => import("../components/Rates/Rates"));
+const Gallery = React.lazy(() => import("../components/Gallery/Gallery"));
+const Events = React.lazy(() => import("../components/Events/Events"));
+const JoinNow = React.lazy(() => import("./JoinNow"));
 
 const Home = () => {
-  // Refs for smooth scrolling
   const programsRef = useRef(null);
 
-  // Scroll to Programs section
+  // Smooth scroll to Programs section
   const scrollToPrograms = () => {
     if (programsRef.current) {
       programsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -22,40 +23,51 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero section */}
       <Hero scrollToPrograms={scrollToPrograms} />
 
       {/* Programs section */}
       <section ref={programsRef} className="py-16">
-        <Programs title="Our Programs" />
+        <Suspense fallback={<div>Loading Programs...</div>}>
+          <Programs title="Our Programs" />
+        </Suspense>
       </section>
 
       {/* Instructors section */}
       <section className="py-16 bg-gray-100">
-        <Instructors />
+        <Suspense fallback={<div>Loading Instructors...</div>}>
+          <Instructors />
+        </Suspense>
       </section>
 
       {/* Rates section */}
       <section className="py-16">
-        <Rates />
+        <Suspense fallback={<div>Loading Rates...</div>}>
+          <Rates />
+        </Suspense>
       </section>
 
-       {/* Gallery section */}
-       <section className="py-16">
-        <Gallery />
+      {/* Gallery section */}
+      <section className="py-16">
+        <Suspense fallback={<div>Loading Gallery...</div>}>
+          <Gallery />
+        </Suspense>
       </section>
-      
+
       {/* Events section */}
       <section className="py-16">
-        <Events />
+        <Suspense fallback={<div>Loading Events...</div>}>
+          <Events />
+        </Suspense>
       </section>
 
       {/* JoinNow section */}
       <section className="py-16">
-        <JoinNow />
+        <Suspense fallback={<div>Loading Join Now...</div>}>
+          <JoinNow />
+        </Suspense>
       </section>
 
-      {/* WhatsApp Link Section - If required */}
+      {/* WhatsApp Link */}
       <WhatsAppLink />
     </div>
   );
