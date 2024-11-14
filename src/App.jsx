@@ -1,6 +1,6 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Programs from "./components/Programs/Programs";
 import Navbar from "./components/Navbar/Navbar";
@@ -15,12 +15,19 @@ import EventDetails from "./components/Events/EventDetails";
 import WhatsAppLink from "./components/WhatsappLink/WhatsappLink";
 import TrainingVideos from "./pages/TrainingVideos";
 import useAuth from "./hooks/useAuth";
-import { Navigate } from "react-router-dom";
+import useIdleLogout from "./hooks/useIdleLogout"; // Idle logout hook
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
+const ProtectedRoute = ({ element, condition }) => {
+  return condition ? element : <Navigate to="/login" />;
+};
+
 const App = () => {
   const { user, role } = useAuth();
+  
+  // Set up idle logout (1 hour = 3600000 ms)
+  useIdleLogout(3600000);
 
   return (
     <Router>
@@ -43,11 +50,10 @@ const App = () => {
         <Route
           path="/training-videos"
           element={
-            user && role === "member" ? (
-              <TrainingVideos />
-            ) : (
-              <Navigate to="/login" />
-            )
+            <ProtectedRoute 
+              element={<TrainingVideos />} 
+              condition={user && role === "member"} 
+            />
           }
         />
 
