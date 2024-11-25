@@ -1,87 +1,73 @@
-import { useState, useEffect } from "react";
-import { auth } from "../firebase";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import strikingImage from "./striking.jpeg";
+import grapplingImage from "./hero.jpeg";
+import { BsPlayCircleFill } from "react-icons/bs";
 
 const TrainingVideos = () => {
-  const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (!user) {
-        navigate("/login"); // Redirect to login if no user is authenticated
-      } else {
-        setLoading(false); // User is authenticated, show the content
-      }
-    });
-
-    return () => unsubscribe(); // Cleanup on component unmount
-  }, [navigate]);
-
-  if (loading) {
-    return <div>Loading...</div>; // Or a loader component
-  }
-
   return (
-    <div className="min-h-screen bg-gray-100 p-8 mt-5">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 p-8 mt-4">
       <div className="max-w-screen-lg mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Jiu-Jitsu Training Videos</h2>
-        
-        {/* Search Bar */}
-        <div className="mb-6">
-          <input
-            type="text"
-            placeholder="Search videos..."
-            value={search}
-            onChange={handleSearch}
-            className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-gray-800 drop-shadow-lg">
+            Training Videos
+          </h2>
+          <p className="mt-3 text-lg text-gray-600">
+            Enhance your skills with expertly curated training content.
+          </p>
         </div>
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {/* Example Video Thumbnail */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Video Thumbnail"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800">Guard Passing Techniques</h3>
-              <p className="text-gray-600 mt-2">A comprehensive guide to guard passing techniques in Jiu-Jitsu.</p>
-            </div>
-          </div>
-
-          {/* Add more video cards */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Video Thumbnail"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800">Armbar from Guard</h3>
-              <p className="text-gray-600 mt-2">Mastering the armbar submission from closed guard.</p>
-            </div>
-          </div>
-
-          {/* More video cards can be dynamically generated here */}
-        </div>
-
-        {/* Call to action for adding videos */}
-        <div className="text-center mt-8">
-          <button
-            className="bg-green-500 text-white py-3 px-8 rounded-full text-lg hover:bg-green-600 transition duration-300"
-            onClick={() => alert('Add new video functionality coming soon!')}
+        {/* Categories Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {/* Striking Category Card */}
+          <div
+            onClick={() => navigate("/training-videos/striking")}
+            className="relative group bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105 hover:shadow-xl"
           >
-            Add New Video
-          </button>
+            <img
+              src={strikingImage}
+              alt="Striking Techniques"
+              className="w-full h-56 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-80 transition duration-300"></div>
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="text-2xl font-bold drop-shadow-lg">Striking</h3>
+              <p className="text-sm drop-shadow-lg">
+                Explore striking techniques and drills to sharpen your skills.
+              </p>
+            </div>
+            {/* Play Icon */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition duration-300">
+              <BsPlayCircleFill size={32} />
+            </div>
+          </div>
+
+          {/* Grappling Category Card */}
+          <div
+            onClick={() => navigate("/training-videos/grappling")}
+            className="relative group bg-white rounded-lg shadow-2xl overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            <img
+              src={grapplingImage}
+              alt="Grappling Techniques"
+              className="w-full h-56 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-80 transition duration-300"></div>
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="text-2xl font-bold drop-shadow-lg">Grappling</h3>
+              <p className="text-sm drop-shadow-lg">
+                Learn advanced grappling moves and techniques to dominate the
+                mat.
+              </p>
+            </div>
+            {/* Play Icon */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition duration-300">
+              <BsPlayCircleFill size={32} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

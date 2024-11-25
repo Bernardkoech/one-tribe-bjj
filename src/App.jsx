@@ -1,4 +1,3 @@
-// App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
@@ -14,6 +13,8 @@ import InstructorDetails from "./components/Instructors/InstructorDetails";
 import EventDetails from "./components/Events/EventDetails";
 import WhatsAppLink from "./components/WhatsappLink/WhatsappLink";
 import TrainingVideos from "./pages/TrainingVideos";
+import StrikingVideos from "./pages/StrikingVideos"; // Import striking videos page
+import GrapplingVideos from "./pages/GrapplingVideos"; // Import grappling videos page
 import useAuth from "./hooks/useAuth";
 import useIdleLogout from "./hooks/useIdleLogout"; // Idle logout hook
 import Login from "./pages/Login";
@@ -46,12 +47,31 @@ const App = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/events/:eventId" element={<EventDetails />} />
 
-        {/* Protected route for training-videos */}
+        {/* Protected route for training videos */}
         <Route
           path="/training-videos"
           element={
             <ProtectedRoute 
               element={<TrainingVideos />} 
+              condition={user && role === "member"} 
+            />
+          }
+        />
+        {/* Protected routes for striking and grappling categories */}
+        <Route
+          path="/training-videos/striking"
+          element={
+            <ProtectedRoute 
+              element={<StrikingVideos />} 
+              condition={user && role === "member"} 
+            />
+          }
+        />
+        <Route
+          path="/training-videos/grappling"
+          element={
+            <ProtectedRoute 
+              element={<GrapplingVideos />} 
               condition={user && role === "member"} 
             />
           }

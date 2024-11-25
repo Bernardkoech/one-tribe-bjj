@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="container mx-auto flex items-center justify-between px-4 py-3">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3 ">
         {/* Left Links */}
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="nav-link" onClick={() => { scrollToTop(); setIsOpen(false); }}>Home</Link>
