@@ -1,4 +1,3 @@
-// src/pages/JoinNow.jsx
 import React, { useState } from "react";
 import emailjs from '@emailjs/browser';
 import Alert from "../components/Alert/Alert";
@@ -11,10 +10,10 @@ const JoinNow = () => {
     phone: "",
     email: "",
     experience: ""
-    
   });
 
   const [alert, setAlert] = useState({ message: "", type: "", isVisible: false });
+  const [loading, setLoading] = useState(false); // State to track loading status
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,24 +21,26 @@ const JoinNow = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); // Show loading spinner
 
     emailjs.send(
-      "service_ahm731q", // Replace with your EmailJS service ID
-      "template_muabr3f", // Your template ID
+      "service_ahm731q",
+      "template_muabr3f",
       formData,
-      "odeWgS5PvV3YKOWsU" // Replace with your EmailJS user ID
+      "odeWgS5PvV3YKOWsU"
     )
     .then(
       (result) => {
-        // Show success alert
         setAlert({ message: "Application submitted successfully!", type: "success", isVisible: true });
         setFormData({ name: "", age: "", occupation: "", phone: "", email: "", experience: "" });
       },
       (error) => {
-        // Show error alert
         setAlert({ message: "An error occurred. Please try again.", type: "error", isVisible: true });
       }
-    );
+    )
+    .finally(() => {
+      setLoading(false); // Hide loading spinner after completion
+    });
   };
 
   const handleCloseAlert = () => {
@@ -80,7 +81,7 @@ const JoinNow = () => {
               value={formData.age}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              placeholder="Enter your age"
+              placeholder="Your Age"
               required
             />
           </div>
@@ -94,7 +95,8 @@ const JoinNow = () => {
               value={formData.occupation}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              placeholder="Your occupation or field of study"
+              placeholder="Your Occupation"
+              required
             />
           </div>
 
@@ -107,13 +109,13 @@ const JoinNow = () => {
               value={formData.phone}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              placeholder="Enter your phone number"
+              placeholder="Your Phone Number"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-md font-medium mb-1">Email</label>
+            <label htmlFor="email" className="block text-md font-medium mb-1">Email Address</label>
             <input
               type="email"
               id="email"
@@ -121,29 +123,37 @@ const JoinNow = () => {
               value={formData.email}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              placeholder="Enter your email address"
+              placeholder="Your Email Address"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="experience" className="block text-md font-medium mb-1">Previous Martial Arts Experience</label>
+            <label htmlFor="experience" className="block text-md font-medium mb-1">Previous Experience</label>
             <textarea
               id="experience"
               name="experience"
               value={formData.experience}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              rows="4"
-              placeholder="Briefly describe any previous martial arts experience"
+              placeholder="Share your Jiu-Jitsu experience (if any)"
             ></textarea>
           </div>
 
+          {/* Show loading spinner when form is being submitted */}
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-3 rounded-full shadow-lg hover:bg-green-700 transition duration-300 transform hover:scale-105"
+            className="w-full bg-green-600 text-white py-3 rounded-md shadow-lg hover:bg-green-700 transition duration-300"
+            disabled={loading} // Disable button while loading
           >
-            Submit Application
+            {loading ? (
+              <span className="flex justify-center items-center">
+                <div className="spinner-border animate-spin border-t-2 border-blue-600 rounded-full w-6 h-6 mr-2"></div>
+                Submitting...
+              </span>
+            ) : (
+              "Submit Application"
+            )}
           </button>
         </form>
       </div>

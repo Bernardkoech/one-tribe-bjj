@@ -1,8 +1,6 @@
-// Import necessary icons
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import React, { useState } from "react";
 import emailjs from '@emailjs/browser';
-
 import Alert from "../components/Alert/Alert";
 
 const Contacts = () => {
@@ -13,6 +11,7 @@ const Contacts = () => {
   });
 
   const [alert, setAlert] = useState({ visible: false, message: "", type: "" });
+  const [loading, setLoading] = useState(false); // State to track loading status
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +20,8 @@ const Contacts = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+    setLoading(true); // Show loading spinner
+
     emailjs.send(
       "service_fpizptm",
       "template_5wm5fq7",
@@ -41,6 +41,9 @@ const Contacts = () => {
     .catch((error) => {
       console.error("Error sending message:", error.text);
       setAlert({ visible: true, message: "There was an error sending your message. Please try again.", type: "error" });
+    })
+    .finally(() => {
+      setLoading(false); // Hide loading spinner after completion
     });
   };
 
@@ -99,11 +102,21 @@ const Contacts = () => {
                 required
               ></textarea>
             </div>
+
+            {/* Show loading spinner when form is being submitted */}
             <button
               type="submit"
               className="w-full bg-green-600 text-white py-3 rounded-full shadow-lg hover:bg-green-700 transition duration-300 transform hover:scale-105"
+              disabled={loading} // Disable button while loading
             >
-              Send Message
+              {loading ? (
+                <span className="flex justify-center items-center">
+                  <div className="spinner-border animate-spin border-t-2 border-blue-600 rounded-full w-6 h-6 mr-2"></div>
+                  Sending...
+                </span>
+              ) : (
+                "Send Message"
+              )}
             </button>
           </form>
         </div>
