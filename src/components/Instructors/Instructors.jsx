@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"; // Import Link
 import instructor1 from "./tete.jpeg"; 
 import instructor2 from "./seraphin.jpeg";
 import instructor3 from "./george.jpg";
+import instructor4 from "./norman.jpeg";
 
 const instructorsData = [
   {
@@ -24,8 +25,15 @@ const instructorsData = [
     name: "George",
     role: "Striking and Grappling Coach",
     bio: "George is a skilled striking coach with a background in Kickboxing.",
-    expertise: ["Striking (Kickboxing, Muay Thai)", "Grappling(Brazilian Jiu-Jitsu, Muay Thai)"],
+    expertise: ["Striking (Kickboxing, Muay Thai)", "Grappling(Brazilian Jiu-Jitsu, Wrestling)"],
     image: instructor3,
+  },
+  {
+    name: "Norman",
+    role: "Assistant Striking and Grappling Coach",
+    bio: "Norman is a skilled striking coach with a background in Kickboxing.",
+    expertise: ["Striking (Kickboxing, Muay Thai)", "Grappling(Brazilian Jiu-Jitsu, Wrestling)"],
+    image: instructor4,
   },
 ];
 

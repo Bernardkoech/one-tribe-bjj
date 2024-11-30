@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import instructor1 from "./tete.jpeg";
 import instructor2 from "./seraphin.jpeg";
 import instructor3 from "./george.jpg";
+import instructor4 from "./norman.jpeg";
 
 const instructorsData = [
     {
@@ -48,6 +49,21 @@ const instructorsData = [
         facebook: "https://facebook.com/george",
       },
       gallery: [instructor3, instructor3, instructor3, instructor3],
+      videoIntro: "https://www.youtube.com/embed/LGO31XqkevM",
+    },
+    {
+      name: "Norman",
+      role: "Assistant Striking Coach",
+      bio: "Norman is a skilled striking coach with a background in Kickboxing.",
+      detailedBio: "Norman has been practicing Kickboxing for over half a decade...",
+      expertise: ["Kickboxing", "Brazilian Jiu-Jitsu"],
+      achievements: ["National Kickboxing Champion 2017", "Certified Kickboxing Instructor"],
+      image: instructor4,
+      socialLinks: {
+        instagram: "https://instagram.com/george",
+        facebook: "https://facebook.com/george",
+      },
+      gallery: [instructor4,instructor4,instructor4,instructor4],
       videoIntro: "https://www.youtube.com/embed/LGO31XqkevM",
     },
   ];
