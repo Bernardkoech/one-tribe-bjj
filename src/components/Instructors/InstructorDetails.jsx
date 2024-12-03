@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import instructor1 from "./tete.jpeg";
 import instructor2 from "./seraphin.jpeg";
 import instructor3 from "./george.jpg";
-import instructor4 from "./norman.jpeg";
+import instructor4 from "./norman1.jpeg";
 
 const instructorsData = [
     {
