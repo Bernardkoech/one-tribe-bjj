@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import logo from "./logo.jpeg";
+import logo from "./onetribex.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
