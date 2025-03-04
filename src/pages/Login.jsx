@@ -37,6 +37,9 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Login</h2>
+        <p className="text-gray-600 text-center mb-4">
+          You must be a member to access the training videos.
+        </p>
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
         <input
           type="email"
