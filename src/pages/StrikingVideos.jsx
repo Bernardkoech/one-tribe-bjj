@@ -10,11 +10,11 @@ const StrikingVideos = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Example Video Card */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Video Thumbnail"
+            <video
+              src="/videos/retro.mp4"  // Path to your video in the public folder
+              controls
               className="w-full h-48 object-cover"
-            />
+            ></video>
             <div className="p-4">
               <h3 className="text-lg font-semibold text-gray-800">
                 Advanced Takedowns
