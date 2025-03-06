@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const GrapplingVideos = () => {
   const videoCategories = {
     "Takedowns and Throws": [
-      { title: "Single Leg Takedown", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Basic single leg takedown technique." },
+      { title: "Single Leg Takedown", file: "MNW.mp4", thumbnail: "/pictures/thumbb.png", description: "Basic single leg takedown technique." },
       { title: "Double Leg Takedown", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Powerful double leg takedown execution." },
     ],
     "The Guard": [
