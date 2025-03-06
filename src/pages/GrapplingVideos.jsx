@@ -53,8 +53,8 @@ const GrapplingVideos = () => {
   );
 
   return (
-    <div className="min-h-screen text-white p-8 pt-24 bg-cover bg-center bg-fixed relative" style={{ backgroundImage: "url('/pictures/martialbg.jpg')" }}>
-      <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    <div className="min-h-screen text-white p-8 pt-24 bg-cover bg-center bg-fixed relative" style={{ backgroundImage: "url('/pictures/strikingbg.jpg')" }}>
+      <div className="absolute inset-0 bg-black bg-opacity-20 backdrop-blur-sm"></div>
       <div className="relative max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-red-600 mb-6 uppercase">Grappling Videos</h2>
 
