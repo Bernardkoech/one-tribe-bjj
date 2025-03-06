@@ -1,36 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const GrapplingVideos = () => {
   const videoCategories = {
     "Takedowns and Throws": [
-      { title: "Single Leg Takedown", file: "Page.mp4", description: "Basic single leg takedown technique." },
-      { title: "Double Leg Takedown", file: "Page.mp4", description: "Powerful double leg takedown execution." },
+      { title: "Single Leg Takedown", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Basic single leg takedown technique." },
+      { title: "Double Leg Takedown", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Powerful double leg takedown execution." },
     ],
     "The Guard": [
-      { title: "Closed Guard Basics", file: "Page.mp4", description: "Fundamentals of the closed guard position." },
-      { title: "Sweeps from Guard", file: "Page.mp4", description: "Effective sweeps to reverse your opponent." },
+      { title: "Closed Guard Basics", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Fundamentals of the closed guard position." },
+      { title: "Sweeps from Guard", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Effective sweeps to reverse your opponent." },
     ],
     "Submissions and Finishes": [
-      { title: "Triangle Choke", file: "Page.mp4", description: "How to apply a triangle choke from guard." },
-      { title: "Armbar from Mount", file: "Page.mp4", description: "Executing an armbar from the mount position." },
+      { title: "Triangle Choke", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "How to apply a triangle choke from guard." },
+      { title: "Armbar from Mount", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Executing an armbar from the mount position." },
     ],
     "Escapes and Defenses": [
-      { title: "Hip Escape", file: "Page.mp4", description: "Essential movement for escaping bad positions." },
-      { title: "Bridge and Roll", file: "Page.mp4", description: "Escape from mount using bridge and roll." },
+      { title: "Hip Escape", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Essential movement for escaping bad positions." },
+      { title: "Bridge and Roll", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Escape from mount using bridge and roll." },
     ],
     "Drills": [
-      { title: "Guard Retention Drills", file: "Page.mp4", description: "Improve your guard retention skills." },
-      { title: "Takedown Entry Drills", file: "Page.mp4", description: "Perfecting entries for takedowns." },
+      { title: "Guard Retention Drills", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Improve your guard retention skills." },
+      { title: "Takedown Entry Drills", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Perfecting entries for takedowns." },
     ],
     "Rolls": [
-      { title: "Flow Rolling", file: "Page.mp4", description: "Light sparring session for smooth movement." },
-      { title: "Live Sparring", file: "Page.mp4", description: "Intense sparring session with a partner." },
+      { title: "Flow Rolling", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Light sparring session for smooth movement." },
+      { title: "Live Sparring", file: "Page.mp4", thumbnail: "/pictures/martialbg.jpg", description: "Intense sparring session with a partner." },
     ],
   };
 
   const [selectedCategory, setSelectedCategory] = useState("Takedowns and Throws");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [hoveredVideo, setHoveredVideo] = useState(null);
+  const [fullScreenVideo, setFullScreenVideo] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setFullScreenVideo(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const handleVideoClick = (file) => {
+    setFullScreenVideo(file);
+  };
 
   const filteredVideos = videoCategories[selectedCategory].filter(video =>
     video.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -53,24 +69,18 @@ const GrapplingVideos = () => {
           />
         </div>
 
-        {/* Mobile Dropdown for Categories */}
-        <div className="relative md:hidden mb-6">
-          <button
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="w-full bg-gray-800 text-white py-2 px-4 rounded-lg flex justify-between items-center"
-          >
-            {selectedCategory} <span>{isDropdownOpen ? "▲" : "▼"}</span>
+        {/* Category Selector */}
+        <div className="mb-6 sm:hidden">
+          <button className="bg-gray-700 text-white px-4 py-2 rounded-lg w-full" onClick={() => setDropdownOpen(!dropdownOpen)}>
+            Select Category
           </button>
-          {isDropdownOpen && (
-            <div className="absolute w-full bg-gray-900 mt-2 rounded-lg shadow-lg z-10">
-              {Object.keys(videoCategories).map((category) => (
+          {dropdownOpen && (
+            <div className="mt-2 bg-gray-800 rounded-lg overflow-hidden">
+              {Object.keys(videoCategories).map(category => (
                 <button
                   key={category}
-                  onClick={() => {
-                    setSelectedCategory(category);
-                    setIsDropdownOpen(false);
-                  }}
-                  className="w-full text-left px-4 py-2 hover:bg-red-500"
+                  onClick={() => { setSelectedCategory(category); setDropdownOpen(false); }}
+                  className="block w-full text-left px-4 py-2 hover:bg-red-500"
                 >
                   {category}
                 </button>
@@ -79,15 +89,12 @@ const GrapplingVideos = () => {
           )}
         </div>
 
-        {/* Desktop Categories */}
-        <div className="hidden md:flex gap-4 overflow-x-auto pb-4 mb-6 border-b border-gray-700">
-          {Object.keys(videoCategories).map((category) => (
+        <div className="mb-6 hidden sm:flex flex-wrap justify-center gap-4">
+          {Object.keys(videoCategories).map(category => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-5 py-2 rounded-full font-semibold text-white transition-all ${
-                selectedCategory === category ? "bg-red-600" : "bg-gray-800 hover:bg-red-500"
-              }`}
+              className={`px-4 py-2 rounded-full font-semibold transition-all transform hover:scale-110 hover:bg-red-500 duration-300 ${selectedCategory === category ? 'bg-red-600 text-white' : 'bg-gray-700 text-gray-300'}`}
             >
               {category}
             </button>
@@ -97,33 +104,36 @@ const GrapplingVideos = () => {
         {/* Video List */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredVideos.map((video, index) => (
-            <div key={index} className="cursor-pointer bg-gray-900 rounded-lg overflow-hidden shadow-lg transition-all transform hover:scale-105">
-              <video
-                className="w-full h-48"
-                controls
-                playsInline
-                webkit-playsinline
-                onClick={(e) => {
-                  e.target.play();
-                  if (e.target.requestFullscreen) {
-                    e.target.requestFullscreen();
-                  } else if (e.target.webkitRequestFullscreen) {
-                    e.target.webkitRequestFullscreen();
-                  } else if (e.target.msRequestFullscreen) {
-                    e.target.msRequestFullscreen();
-                  }
-                }}
-              >
-                <source src={`/videos/${video.file}`} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className="p-3">
-                <h3 className="text-lg font-semibold text-red-500">{video.title}</h3>
-                <p className="text-gray-400 text-sm">{video.description}</p>
+            <div 
+              key={index} 
+              className="cursor-pointer bg-gray-900 rounded-lg overflow-hidden shadow-lg transition-all transform hover:scale-105"
+              onClick={() => handleVideoClick(video.file)}
+            >
+              <div className="relative w-full h-48" onMouseEnter={() => setHoveredVideo(index)} onMouseLeave={() => setHoveredVideo(null)}>
+                {hoveredVideo === index ? (
+                  <video className="absolute top-0 left-0 w-full h-full object-cover" loop muted autoPlay>
+                    <source src={`/videos/${video.file}`} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img src={video.thumbnail} alt={video.title} className="absolute top-0 left-0 w-full h-full object-cover" />
+                )}
+              </div>
+              <div className="p-2 text-center">
+                <h3 className="font-bold text-lg">{video.title}</h3>
+                <p className="text-sm text-gray-400">{video.description}</p>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Full Screen Video */}
+        {fullScreenVideo && (
+          <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50" onClick={() => setFullScreenVideo(null)}>
+            <video className="max-w-full max-h-full" controls autoPlay>
+              <source src={`/videos/${fullScreenVideo}`} type="video/mp4" />
+            </video>
+          </div>
+        )}
       </div>
     </div>
   );
